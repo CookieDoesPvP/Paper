@@ -29,7 +29,7 @@ index 6677e1b..eaf6c49 100644
 +    public boolean callEvent() {
 +        Bukkit.getPluginManager().callEvent(this);
 +        if (this instanceof Cancellable) {
-+            return !((Cancellable) this).isCancelled();
++            return !((Cancellable this).isCancelled();
 +        } else {
 +            return true;
 +        }
