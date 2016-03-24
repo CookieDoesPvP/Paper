@@ -37,7 +37,8 @@ index 343f238..3c38d85 100644
      private int maxPlayers;
  
      public ServerListPingEvent(final InetAddress address, final String motd, final int numPlayers, final int maxPlayers) {
-+        super(); // Paper - Is this event being fired async?
++        
+         super(); // Paper - Is this event being fired async?
          Validate.isTrue(numPlayers >= 0, "Cannot have negative number of players online", numPlayers);
          this.address = address;
          this.motd = motd;
@@ -45,10 +46,14 @@ index 343f238..3c38d85 100644
       * @param maxPlayers the max number of players
       */
      protected ServerListPingEvent(final InetAddress address, final String motd, final int maxPlayers) {
-+        super(); // Paper - Is this event being fired async?
-         this.numPlayers = MAGIC_PLAYER_COUNT;
-         this.address = address;
-         this.motd = motd;
+        
+        //running this before the super() will allow for the spigot pingevent constrcutor to work less underload?
+        
+        this.PlayerCount = MAGIC_PLAYERCOUNT;
+        this.address = adress;
+        this.motd = motd;
+     
++        super(); // Paper - Is this event being fired async? yes
 -- 
 2.7.2
 
